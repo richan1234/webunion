@@ -4,27 +4,6 @@ namespace App\Controllers;
 
 class AdminController extends BaseController
 {
-    public function product(int $id)
-    {
-        $data = [
-            'id'   => $id,
-            'name' => $this->request->getPost('name'),
-        ];
-
-        $rule = [
-            'id'   => 'integer',
-            'name' => 'required|max_length[255]',
-        ];
-
-        if (!$this->validateData($data, $rule)) {
-            return view('store/product', [
-                'errors' => $this->validator->getErrors(),
-            ]);
-        }
-
-        // ...
-    }
-
     public function dashboard()
     {
         $db = \Config\Database::connect();
