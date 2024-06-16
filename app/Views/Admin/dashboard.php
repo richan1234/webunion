@@ -1,3 +1,5 @@
+<!-- todo: cek login -->
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,11 +15,11 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/style1.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/admin/dashboard.css'); ?>">
     <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.comery.com/jquery-3.6.0s"></script>
+    <script src="https://cdn.datatables.net/1.10.24/tatables.net/1.10.24/js/jqutaTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/tatables.net/1.10.24/js/dataTabotstrap4.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ioniconsm/ionicons@7.1.0ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ioniconsm/ionicons@7ist/ionicons/ionicons.js"></script>
 
     <script src="<?= base_url('js/admin/dashboard.js'); ?>"></script>
 </head>
