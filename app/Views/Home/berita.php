@@ -1,4 +1,3 @@
-<!-- todo: cek login -->
 <!doctype html>
 <html lang="zxx">
 
@@ -34,8 +33,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="home.php">
-                            <img src="img/logo.png" alt="logo" />
+                        <a class="navbar-brand" href="<?= base_url('home') ?>">
+                            <img src="<?= base_url('img/logo.png') ?>" alt="logo" />
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="menu_icon"><i class="fas fa-bars"></i></span>
@@ -44,27 +43,27 @@
                         <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="home.php">Halaman Utama</a>
+                                    <a class="nav-link" href="<?= base_url('home') ?>">Halaman Utama</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Kategori
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="kategori_akademik.php">Akademik</a>
-                                        <a class="dropdown-item" href="kategori_nonakademik.php">Non-Akademik</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/kategori_akademik') ?>">Akademik</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/kategori_nonakademik') ?>">Non-Akademik</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="berita.php">Berita</a>
+                                    <a class="nav-link" href="<?= base_url('home/berita') ?>">Berita</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Form Pengajuan
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="form_lomba.php">Info Lomba</a>
-                                        <a class="dropdown-item" href="form_tim.php">Tim Lomba</a>
+                                        <a class="dropdown-item" href="<?= base_url('form/form_lomba') ?>">Info Lomba</a>
+                                        <a class="dropdown-item" href="<?= base_url('form/form_tim') ?>">Tim Lomba</a>
                                     </div>
                                 </li>
                             </ul>
@@ -74,7 +73,7 @@
                             <a href=""><i class="ti-bell"></i></a>
                             <div class="dropdown cart">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <a href="profil.php" class="icon-link">
+                                    <a href="<?= base_url('mahasiswa/profile')?>" class="icon-link">
                                         <i class="ti-user"></i>
                                     </a>
                                 </a>
@@ -84,6 +83,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="search_input" id="search_input_box">
             <div class="container">
                 <form class="d-flex justify-content-between search-inner">
@@ -109,13 +109,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="img/pemenang_lomba/thailand.png" alt="First slide" />
+                            <img class="d-block w-100" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="First slide" />
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="img/pemenang_lomba/thailand.png" alt="Second slide" />
+                            <img class="d-block w-100" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="Second slide" />
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="img/pemenang_lomba/thailand.png" alt="Third slide" />
+                            <img class="d-block w-100" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="Third slide" />
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -140,7 +140,7 @@
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/pemenang_lomba/thailand.png" alt="">
+                                <img class="card-img rounded-0" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="">
                                 <a href="#" class="blog_item_date">
                                     <h3>15</h3>
                                     <p>Jan</p>
@@ -162,7 +162,7 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/pemenang_lomba/thailand.png" alt="">
+                                <img class="card-img rounded-0" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="">
                                 <a href="#" class="blog_item_date">
                                     <h3>15</h3>
                                     <p>Jan</p>
@@ -184,7 +184,7 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/pemenang_lomba/thailand.png" alt="">
+                                <img class="card-img rounded-0" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="">
                                 <a href="#" class="blog_item_date">
                                     <h3>15</h3>
                                     <p>Jan</p>
@@ -206,7 +206,7 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/pemenang_lomba/thailand.png" alt="">
+                                <img class="card-img rounded-0" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="">
                                 <a href="#" class="blog_item_date">
                                     <h3>15</h3>
                                     <p>Jan</p>
@@ -228,7 +228,7 @@
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/pemenang_lomba/thailand.png" alt="">
+                                <img class="card-img rounded-0" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="">
                                 <a href="#" class="blog_item_date">
                                     <h3>15</h3>
                                     <p>Jan</p>
