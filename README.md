@@ -17,32 +17,27 @@ cd webunion
 composer install
 ```
 ```shell
-composer require tymon/jwt-auth
+composer require codeigniter4/shield
 ```
 
-4. Publish config
+4. Config setup
 ```shell
-php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+php spark shield:setup
 ```
 
-5. Generate secret key
+5. Run the database migrations (Set the database connection in .env before migrating)
 ```shell
-php artisan jwt:secret
+php spark migrate --all
 ```
 
-6. Run the database migrations (Set the database connection in .env before migrating)
+6. Seed the database 
 ```shell
-php artisan migrate
-```
-
-7. Seed the database 
-```shell
-php artisan db:seed
+php spark db:seed DatabaseSeeder
 ```
 
 8. Start the local development server 
 ```shell
-php artisan serve
+php spark serve
 ```
 
 
