@@ -10,6 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('css/land.css') ?>" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="<?= base_url('js/user/index.js') ?>" crossorigin="anonymous"></script>
 </head>
 
 <body class="d-flex">
@@ -34,18 +36,19 @@
     <div class="popup-content user">
         <div class="popup">
             <div class="close-btn">&times;</div>
-            <form class="form" action="login.php" method="post">
-                <h2>Log in</h2>
+            <form class="form" id="mahasiswa-login-form" action="<?= base_url('/auth/mahasiswa/login') ?>" method="post">
+                <h2>Login</h2>
+                <div id="error-message" style="color:red"></div>
                 <div class="form-element">
-                    <label for="NIM">Username</label>
-                    <input type="text" id="NIM" name="NIM" placeholder="Enter Username">
+                    <label for="NIM">NIM</label>
+                    <input type="text" id="NIM" name="NIM" placeholder="Enter NIM">
                 </div>
                 <div class="form-element">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter Password">
                 </div>
                 <div class="form-element">
-                    <button type="submit" class="btn">Sign in</button>
+                    <button type="submit" class="btn" id="submit-btn">Sign in</button>
                 </div>
                 <div class="form-element">
                     <a href="#">Forgot Password?</a>
@@ -55,6 +58,7 @@
                 </div>
             </form>
         </div>
+    </div>
     </div>
 
     <div class="popup-content admin">
