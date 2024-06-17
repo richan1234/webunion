@@ -27,6 +27,8 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('css/responsive.css') ?>" />
+
+    <script src="<? base_url('js/auth.js') ?>" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -36,8 +38,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="home.php">
-                            <img src="img/logo.png" alt="logo" />
+                        <a class="navbar-brand" href="<?= base_url('home') ?>">
+                            <img src="<?= base_url('img/logo.png') ?>" alt="logo" />
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="menu_icon"><i class="fas fa-bars"></i></span>
@@ -46,27 +48,27 @@
                         <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-              </div>                      <a class="nav-link" href="home.php">Halaman Utama</a>
+                                    <a class="nav-link" href="<?= base_url('home') ?>">Halaman Utama</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Kategori
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="kategori_akademik.php">Akademik</a>
-                                        <a class="dropdown-item" href="kategori_nonakademik.php">Non-Akademik</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/kategori_akademik') ?>">Akademik</a>
+                                        <a class="dropdown-item" href="<?= base_url('home/kategori_nonakademik') ?>">Non-Akademik</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="berita.php">Berita</a>
+                                    <a class="nav-link" href="<?= base_url('home/berita') ?>">Berita</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Form Pengajuan
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                        <a class="dropdown-item" href="form_lomba.php">Info Lomba</a>
-                                        <a class="dropdown-item" href="form_tim.php">Tim Lomba</a>
+                                        <a class="dropdown-item" href="<?= base_url('form/form_lomba') ?>">Info Lomba</a>
+                                        <a class="dropdown-item" href="<?= base_url('form/form_tim') ?>">Tim Lomba</a>
                                     </div>
                                 </li>
                             </ul>
@@ -76,7 +78,7 @@
                             <a href=""><i class="ti-bell"></i></a>
                             <div class="dropdown cart">
                                 <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <a href="profil.php" class="icon-link">
+                                    <a href="<?= base_url('mahasiswa/profile') ?>" class="icon-link">
                                         <i class="ti-user"></i>
                                     </a>
                                 </a>
@@ -86,6 +88,7 @@
                 </div>
             </div>
         </div>
+
         <div class="search_input" id="search_input_box">
             <div class="container">
                 <form class="d-flex justify-content-between search-inner">
@@ -110,17 +113,17 @@
                     <div class="carousel-inner">
                         <div class="carousel-item align-items-center active">
                             <a href="#">
-                                <img class="d-block w-100 center" src="img/pemenang_lomba/thailand.png" alt="First slide">
+                                <img class="d-block w-100 center" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="First slide">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="#">
-                                <img class="d-block w-100" src="img/pemenang_lomba/thailand.png" alt="Second slide">
+                                <img class="d-block w-100" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="Second slide">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="#">
-                                <img class="d-block w-100" src="img/pemenang_lomba/thailand.png" alt="Third slide">
+                                <img class="d-block w-100" src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt="Third slide">
                             </a>
                         </div>
                     </div>
@@ -135,6 +138,9 @@
                 </div>
             </div>
         </div>
+    </section>
+    </div>
+    </div>
     </section>
     <!-- banner part stop -->
 
@@ -162,7 +168,7 @@
                     <div class="best_product_slider owl-carousel">
                         <a href="#">
                             <div class="single_product_item">
-                                <img src="img/poster_lomba/poster_1.png" alt="">
+                                <img src="<?= base_url('img/poster_lomba/poster_1.png') ?>" alt="">
                                 <div class="single_product_text">
                                     <h4>Lomba Karya Ilmiah UGM Festival</h4>
                                     <h3>1-4 Februari 2024</h3>
@@ -171,7 +177,7 @@
                         </a>
                         <a href="#">
                             <div class="single_product_item">
-                                <img src="img/poster_lomba/poster_2.png" alt="">
+                                <img src="<?= base_url('img/poster_lomba/poster_2.png') ?>" alt="">
                                 <div class="single_product_text">
                                     <h4>Olimpiade Kedokteran</h4>
                                     <h3>5-6 Februari 2024</h3>
@@ -180,7 +186,7 @@
                         </a>
                         <a href="#">
                             <div class="single_product_item">
-                                <img src="img/poster_lomba/poster_3.png" alt="">
+                                <img src="<?= base_url('img/poster_lomba/poster_3.png') ?>" alt="">
                                 <div class="single_product_text">
                                     <h4>Lomba Hackathon</h4>
                                     <h3>6-7 Februari</h3>
@@ -189,7 +195,7 @@
                         </a>
                         <a href="">
                             <div class="single_product_item">
-                                <img src="img/poster_lomba/poster_4.png" alt="">
+                                <img src="<?= base_url('img/poster_lomba/poster_4.png') ?>" alt="">
                                 <div class="single_product_text">
                                     <h4>Lomba Farmasi</h4>
                                     <h3>11 Februari 2024</h3>
@@ -198,7 +204,7 @@
                         </a>
                         <a href="">
                             <div class="single_product_item">
-                                <img src="img/poster_lomba/poster_5.png" alt="">
+                                <img src="<?= base_url('img/poster_lomba/poster_5.png') ?>" alt="">
                                 <div class="single_product_text">
                                     <h4>Lomba Kedokteran</h4>
                                     <h3>13 Februari 2024</h3>
@@ -238,17 +244,17 @@
             </div>
             <div class="pilih_kategori row align-items-center justify-content-between">
                 <div class="akademik text-center">
-                    <a href="kategori_akademik.php">
-                        <img src="img/poster_lomba/poster_5.png" alt="" />
-                        <h3 class="pt-4">Akademik</h3>
-                        <a href="kategori_akademik.php" class="btn btn-primary tombol-kategori font-weight-bold">Klik Disini</a>
+                    <a href="<?= base_url('kategori_akademik') ?>"></a>
+                    <img src="<?= base_url('img/poster_lomba/poster_5.png') ?>" alt="" />
+                    <h3 class="pt-4">Akademik</h3>
+                    <a href="<?= base_url('kategori_akademik') ?>" class="btn btn-primary tombol-kategori font-weight-bold">Klik Disini</a>
                     </a>
                 </div>
                 <div class="non-akademik text-center">
-                    <a href="kategori_nonakademik.php">
-                        <img src="img/poster_lomba/poster_8.png" alt="" />
+                    <a href="<?= base_url('home/kategori_nonakademik') ?>">
+                        <img src="<?= base_url('img/poster_lomba/poster_8.png') ?>" alt="" />
                         <h3 class="pt-4">Non-Akademik</h3>
-                        <a href="kategori_nonakademik.php" class="btn btn-primary tombol-kategori font-weight-bold ">Klik Disini</a>
+                        <a href="<?= base_url('home/kategori_nonakademik') ?>" class="btn btn-primary tombol-kategori font-weight-bold ">Klik Disini</a>
                     </a>
                 </div>
             </div>
@@ -262,31 +268,12 @@
                 <h2 style="padding-top: 10rem" class="font-weight-bolder">BERITA TERBARU</h2>
             </div>
 
-            <div class="row media pb-5">
-                <a href="#"><img src="img/pemenang_lomba/thailand.png" alt="" class="mr-4"></a>
+            <div class="d-flex flex-row media pb-5">
+                <a href="#"><img src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt=""></a>
                 <div class="media-body">
-                    <a href="">
-                        <h3>CONTOH JUDUL BREAKING NEWS 1</h3>
-                    </a>
-                    <p class="card-text"><small class="text-muted">Sabtu, 10 Februari 2024</small></p>
-                    <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum corporis id aut beatae voluptates voluptatem quaerat voluptas reiciendis accusamus?</p>
 
                 </div>
-            </div>
-            <div class="row media pb-5">
-                <a href="#"><img src="img/pemenang_lomba/thailand.png" alt="" class="mr-4"></a>
-                <div class="media-body">
-                    <a href="">
-                        <h3>CONTOH JUDUL BREAKING NEWS 1</h3>
-                    </a>
-                    <p class="card-text"><small class="text-muted">Sabtu, 10 Februari 2024</small></p>
-                    <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum corporis id aut beatae voluptates voluptatem quaerat voluptas reiciendis accusamus?</p>
-
-                </div>
-            </div>
-            <div class="row media pb-5">
-                <a href="#"><img src="img/pemenang_lomba/thailand.png" alt="" class="mr-4"></a>
-                <div class="media-body">
+                <div>
                     <a href="">
                         <h3>CONTOH JUDUL BREAKING NEWS 1</h3>
                     </a>
@@ -294,29 +281,51 @@
                     <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum corporis id aut beatae voluptates voluptatem quaerat voluptas reiciendis accusamus?</p>
                 </div>
             </div>
-            <div class="row media pb-5">
-                <a href="#"><img src="img/pemenang_lomba/thailand.png" alt="" class="mr-4"></a>
+
+            <div class="d-flex flex-row media pb-5">
+                <a href="#"><img src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt=""></a>
                 <div class="media-body">
+
+                </div>
+                <div>
                     <a href="">
-                        <h3>CONTOH JUDUL BREAKING NEWS 1</h3>
+                        <h3>CONTOH JUDUL BREAKING NEWS 2</h3>
                     </a>
                     <p class="card-text"><small class="text-muted">Sabtu, 10 Februari 2024</small></p>
                     <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum corporis id aut beatae voluptates voluptatem quaerat voluptas reiciendis accusamus?</p>
-
                 </div>
             </div>
-            <div class="row media pb-5">
-                <a href="#"><img src="img/pemenang_lomba/thailand.png" alt="" class="mr-4"></a>
+
+            <div class="d-flex flex-row media pb-5">
+                <a href="#"><img src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt=""></a>
                 <div class="media-body">
+
+                </div>
+                <div>
                     <a href="">
-                        <h3>CONTOH JUDUL BREAKING NEWS 1</h3>
+                        <h3>CONTOH JUDUL BREAKING NEWS 3</h3>
                     </a>
                     <p class="card-text"><small class="text-muted">Sabtu, 10 Februari 2024</small></p>
                     <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum corporis id aut beatae voluptates voluptatem quaerat voluptas reiciendis accusamus?</p>
-
                 </div>
             </div>
 
+            <div class="d-flex flex-row media pb-5">
+                <a href="#"><img src="<?= base_url('img/pemenang_lomba/thailand.png') ?>" alt=""></a>
+                <div class="media-body">
+
+                </div>
+                <div>
+                    <a href="">
+                        <h3>CONTOH JUDUL BREAKING NEWS 4</h3>
+                    </a>
+                    <p class="card-text"><small class="text-muted">Sabtu, 10 Februari 2024</small></p>
+                    <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nostrum corporis id aut beatae voluptates voluptatem quaerat voluptas reiciendis accusamus?</p>
+                </div>
+            </div>
+        </div>
+
+        </div>
         </div>
     </section>
     <!-- Berita part start -->
