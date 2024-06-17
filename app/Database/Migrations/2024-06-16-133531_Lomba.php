@@ -52,6 +52,11 @@ class Lomba extends Migration
             'tanggal_selesai' => [
                 'type' => 'DATE',
             ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => false,
+            ],
+
         ]);
 
         $this->forge->addKey('lomba_id', TRUE);

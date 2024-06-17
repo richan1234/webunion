@@ -25,6 +25,11 @@ class TimLomba extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '20',
             ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => false,
+            ],
+
         ]);
 
         $this->forge->addKey('tim_lomba_id', TRUE);
