@@ -30,10 +30,10 @@ class LombaModel extends Model
         'poster_lomba',
         'link_lomba',
         'keterangan_lomba',
-        'tanggal_lomba',
         'tenggat_pendaftaran',
         'tanggal_mulai',
         'tanggal_selesai',
         'status'
     ];
+    
 }

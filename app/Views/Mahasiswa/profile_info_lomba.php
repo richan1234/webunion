@@ -147,24 +147,33 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Lomba Matematika</td>
-                <td>20 Juni 2024</td>
-                <td>17 Juni 2024</td>
-                <td class="status disetujui">Disetujui</td>
-              </tr>
-              <tr>
-                <td>Lomba Sains</td>
-                <td>25 Juni 2024</td>
-                <td>20 Juni 2024</td>
-                <td class="status pending">Pending</td>
-              </tr>
-              <tr>
-                <td>Lomba Menulis</td>
-                <td>30 Juni 2024</td>
-                <td>25 Juni 2024</td>
-                <td class="status tidak-disetujui">Tidak Disetujui</td>
-              </tr>
+              <?php foreach ($lomba as $lomba) : ?>
+                <tr>
+                  <td><?= $lomba['nama_lomba'] ?></td>
+                  <td><?= $lomba['tanggal_mulai'] ?></td>
+                  <td><?= $lomba['tenggat_pendaftaran'] ?></td>
+                  <?php
+                  $status = strtolower($lomba['status']);
+                  $style = '';
+                  switch ($status) {
+                    case 0:
+                      $style = 'red';
+                      $text = 'Tidak Disetujui';
+                      break;
+                    case 1:
+                      $style = 'orange';
+                      $text = 'Pending';
+                      break;
+                    case 2:
+                      $style = 'green';
+                      $text = 'Disetujui';
+                      break;
+                  }
+                  ?>
+                  <td style="color: <?= $style ?>; font-weight: bold"><?= $text ?></td>
+                </tr>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

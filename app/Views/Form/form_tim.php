@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="<?= base_url('css/slick.css') ?>">
   <!-- style CSS -->
   <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 </head>
 
 <body>
@@ -92,90 +94,95 @@
     <div class="container">
       <div class="judul_form_lomba">
         <!-- Bagian judul form lainnya di sini -->
+        <div class="section-title text-center">
+          <h2>FORM PENGAJUAN TIM LOMBA</h2>
+        </div>
       </div>
+      <!-- ALERT -->
+      <section id="message">
+        <?php if (session()->getFlashdata('success')) : ?>
+          <div class="alert alert-success">
+            <?= session()->getFlashdata('success'); ?>
+          </div>
+        <?php endif; ?>
 
-      <form action="inserttim.php" method="POST" class="form_lomba">
-        <section class="pb-3">
+        <?php if (session()->getFlashdata('errors')) : ?>
+          <div class="alert alert-danger">
+            <?= session()->getFlashdata('errors'); ?>
+          </div>
+        <?php endif; ?>
+      </section>
+
+      <form action="<?= base_url('form/insert_tim') ?>" method="POST" class="form_lomba">
+        <section id="lomba" class="pb-3">
           <div class="input-box">
             <label>Nama Lomba</label>
-            <input type="text" name="nama_lomba" placeholder="Cantumkan Nama Lomba">
-          </div>
-
-          <div class="input-box">
-            <label>Nama Tim</label>
-            <input type="text" name="nama_tim" placeholder="Cantumkan Nama Tim">
-          </div>
-        </section>
-
-        <section id="ketua" class="pb-3">
-          <div class="input-box">
-            <label>Nama Ketua</label>
-            <input type="text" name="nama_ketua" placeholder="Cantumkan Nama Ketua">
-          </div>
-
-          <div class="d-flex flex-column input-box">
-            <label>Prodi Ketua</label>
-            <select class="custom-select" name="prodi_anggota_1" name="prodi_ketua">
-              <option value="Pilih prodi" disabled selected>Pilih Prodi</option>
-              <?php foreach ($result as $row) : ?>
-                <option value="<?= $row['prodi_id'] ?>"><?= $row['nama_prodi'] ?></option>
+            <select class="custom-select" id="nama_lomba" name="lomba_id" data-live-search="true">
+              <option value="null" disabled selected>Cantumkan Nama Lomba</option>
+              <?php foreach ($lomba as $row) : ?>
+                <option value="<?= $row['lomba_id'] ?>" id="nama_lomba" name="lomba_id" data-tokens="<?= $row['lomba_id'] ?>"><?= $row['nama_lomba'] ?></option>
               <?php endforeach; ?>
             </select>
           </div>
-        </section>
 
-        <section id="anggota_1" class="pb-3">
-          <div class="input-box">
-            <label>Nama Anggota 1</label>
-            <input type="text" name="anggota_1" placeholder="Cantumkan Nama Anggota">
-          </div>
+          <section>
+            <div class="input-box">
+              <label>Nama Tim</label>
+              <input type="text" name="nama_tim" placeholder="Cantumkan Nama Tim">
+            </div>
+          </section>
 
-          <div class="d-flex flex-column input-box">
-            <label>Prodi Anggota</label>
-            <select class="custom-select" name="prodi_anggota_1">
-              <option value="Pilih prodi" disabled selected>Pilih Prodi</option>
-              <?php foreach ($result as $row) : ?>
-                <option value="<?= $row['prodi_id'] ?>"><?= $row['nama_prodi'] ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-        </section>
+          <section id="ketua" class="pb-3">
+            <div class="input-box">
+              <label>Nama Ketua</label>
+              <select class="custom-select" id="nama_ketua" name="NIM_ketua" data-live-search="true">
+                <option value="null" disabled selected>Cantumkan Nama Ketua</option>
+                <?php foreach ($mahasiswa as $row) : ?>
+                  <option value="<?= $row['NIM'] ?>" data-prodi-id-ketua="<?= $row['prodi_id'] ?>" data-tokens="<?= $row['prodi_id'] ?>"><?= $row['nama_lengkap'] ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
 
-        <section id="anggota_2" class="pb-3">
-          <div class="input-box">
-            <label>Nama Anggota 2</label>
-            <input type="text" name="anggota_2" placeholder="Cantumkan Nama Anggota">
-          </div>
+            <div class="d-flex flex-column input-box">
+              <label>Prodi Ketua</label>
+              <p id="prodi-ketua" class="border rounded w-100 px-3 py-2">Pilih Ketua terlebih dahulu</p>
+            </div>
+          </section>
 
-          <div class="d-flex flex-column input-box">
-            <label>Prodi Anggota</label>
-            <select class="custom-select" name="prodi_anggota_2">
-              <option value="Pilih prodi" disabled selected>Pilih Prodi</option>
-              <?php foreach ($result as $row) : ?>
-                <option value="<?= $row['prodi_id'] ?>"><?= $row['nama_prodi'] ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-        </section>
+          <section id="anggota1" class="pb-3">
+            <div class="input-box">
+              <label>Nama Anggota 1</label>
+              <select id="nama_anggota1" class="custom-select" name="NIM_anggota1">
+                <option value="null" disabled selected>Cantumkan Nama Anggota 1</option>
+                <?php foreach ($mahasiswa as $row) : ?>
+                  <option value="<?= $row['NIM'] ?>" data-prodi-id-anggota="<?= $row['prodi_id'] ?>"><?= $row['nama_lengkap'] ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
 
-        <section id="anggota_3" class="pb-3">
-          <div class="input-box">
-            <label>Nama Anggota 3</label>
-            <input type="text" name="anggota_3" placeholder="Cantumkan Nama Anggota">
-          </div>
+            <div class="d-flex flex-column input-box">
+              <label>Prodi Anggota 1</label>
+              <p id="prodi-anggota1" class="border rounded w-100 px-3 py-2">Pilih Anggota 1 terlebih dahulu</p>
+            </div>
+          </section>
 
-          <div class="d-flex flex-column input-box">
-            <label>Prodi Anggota</label>
-            <select class="custom-select" name="prodi_anggota_3">
-              <option value="Pilih prodi" disabled selected>Pilih Prodi</option>
-              <?php foreach ($result as $row) : ?>
-                <option value="<?= $row['prodi_id'] ?>"><?= $row['nama_prodi'] ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-        </section>
+          <section id="anggota2" class="pb-3">
+            <div class="input-box">
+              <label>Nama Anggota 2</label>
+              <select id="nama_anggota2" class="custom-select" name="NIM_anggota2">
+                <option value="null" disabled selected>Cantumkan Nama Anggota 2</option>
+                <?php foreach ($mahasiswa as $row) : ?>
+                  <option value="<?= $row['NIM'] ?>" data-prodi-id-anggota="<?= $row['prodi_id'] ?>"><?= $row['nama_lengkap'] ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Kirim</button>
+            <div class="d-flex flex-column input-box">
+              <label>Prodi Anggota 2</label>
+              <p id="prodi-anggota2" class="border rounded w-100 px-3 py-2">Pilih Anggota 2 terlebih dahulu</p>
+            </div>
+          </section>
+          <button type="submit" class="btn btn-primary">Kirim</button>
       </form>
     </div>
   </section>
@@ -286,6 +293,110 @@
   <script src="<?= base_url('js/jquery.validate.min.js') ?>"></script>
   <script src="<?= base_url('js/mail-script.js') ?>"></script>
   <!-- custom js -->
+  <script src="<?= base_url('js/form/form_tim.js') ?>"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const selectKetua = document.querySelector('select[id="nama_ketua"]');
+      const selectAnggota1 = document.getElementById('nama_anggota1');
+      const selectAnggota2 = document.getElementById('nama_anggota2');
+      const prodiKetuaElement = document.getElementById('prodi-ketua');
+      const prodiAnggota1Element = document.getElementById('prodi-anggota1');
+      const prodiAnggota2Element = document.getElementById('prodi-anggota2');
+
+      const prodiList = <?= json_encode($prodi) ?>;
+      const mahasiswaList = <?= json_encode($mahasiswa) ?>;
+
+      // Update Prodi Ketua on selection change
+      selectKetua.addEventListener('change', function() {
+        const selectedOption = selectKetua.options[selectKetua.selectedIndex];
+        const prodiId = selectedOption.getAttribute('data-prodi-id-ketua');
+        const selectedNIMKetua = selectedOption.value;
+
+        if (prodiId) {
+          prodiKetuaElement.textContent = prodiList.find(prodi => prodi.prodi_id === prodiId).nama_prodi || 'Prodi tidak ditemukan';
+        } else {
+          prodiKetuaElement.textContent = 'Pilih nama ketua terlebih dahulu';
+        }
+
+        updateAnggotaOptions(selectedNIMKetua);
+      });
+
+      // Update Prodi Anggota 1 on selection change
+      selectAnggota1.addEventListener('change', function() {
+        const selectedOption = selectAnggota1.options[selectAnggota1.selectedIndex];
+        const prodiId = selectedOption.getAttribute('data-prodi-id-anggota');
+
+        if (prodiId) {
+          prodiAnggota1Element.textContent = prodiList.find(prodi => prodi.prodi_id === prodiId).nama_prodi || 'Prodi tidak ditemukan';
+        } else {
+          prodiAnggota1Element.textContent = 'Pilih nama anggota 1 terlebih dahulu';
+        }
+
+        updateAnggota2Options();
+      });
+
+      // Update Prodi Anggota 2 on selection change
+      selectAnggota2.addEventListener('change', function() {
+        const selectedOption = selectAnggota2.options[selectAnggota2.selectedIndex];
+        const prodiId = selectedOption.getAttribute('data-prodi-id-anggota');
+
+        if (prodiId) {
+          prodiAnggota2Element.textContent = prodiList.find(prodi => prodi.prodi_id === prodiId).nama_prodi || 'Prodi tidak ditemukan';
+        } else {
+          prodiAnggota2Element.textContent = 'Pilih nama anggota 2 terlebih dahulu';
+        }
+      });
+
+      function updateAnggotaOptions(selectedNIMKetua) {
+        // Clear current options for both anggotas
+        selectAnggota1.innerHTML = '<option value="null" disabled selected>Cantumkan Nama Anggota 1</option>';
+        selectAnggota2.innerHTML = '<option value="null" disabled selected>Cantumkan Nama Anggota 2</option>';
+
+        // Populate anggota options excluding the selected ketua
+        mahasiswaList.forEach(mahasiswa => {
+          if (mahasiswa.NIM !== selectedNIMKetua) {
+            const option1 = document.createElement('option');
+            option1.value = mahasiswa.NIM;
+            option1.textContent = mahasiswa.nama_lengkap;
+            option1.setAttribute('data-prodi-id-anggota', mahasiswa.prodi_id);
+            selectAnggota1.appendChild(option1);
+
+            const option2 = document.createElement('option');
+            option2.value = mahasiswa.NIM;
+            option2.textContent = mahasiswa.nama_lengkap;
+            option2.setAttribute('data-prodi-id-anggota', mahasiswa.prodi_id);
+            selectAnggota2.appendChild(option2);
+          }
+        });
+
+        // Call updateAnggota2Options to ensure correct initial state
+        updateAnggota2Options();
+      }
+
+      function updateAnggota2Options() {
+        const selectedNIMKetua = selectKetua.value;
+        const selectedNIMAnggota1 = selectAnggota1.value;
+
+        // Clear current options for anggota 2
+        selectAnggota2.innerHTML = '<option value="null" disabled selected>Cantumkan Nama Anggota 2</option>';
+
+        // Populate anggota 2 options excluding the selected ketua and anggota 1
+        mahasiswaList.forEach(mahasiswa => {
+          if (mahasiswa.NIM !== selectedNIMKetua && mahasiswa.NIM !== selectedNIMAnggota1) {
+            const option = document.createElement('option');
+            option.value = mahasiswa.NIM;
+            option.textContent = mahasiswa.nama_lengkap;
+            option.setAttribute('data-prodi-id-anggota', mahasiswa.prodi_id);
+            selectAnggota2.appendChild(option);
+          }
+        });
+      }
+
+      // Initial call to populate anggota options
+      updateAnggotaOptions(selectKetua.value);
+    });
+  </script>
 
 </body>
 

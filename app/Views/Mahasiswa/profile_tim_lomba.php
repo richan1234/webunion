@@ -150,51 +150,39 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Lomba Matematika</td>
-                <td>Tim Alpha</td>
-                <td>Ahmad</td>
-                <td>
-                  <ol>
-                    <li>Budi</li>
-                    <li>Citra</li>
-                    <li>Dewi</li>
-                  </ol>
-                </td>
-                <td>20 Juni 2024</td>
-                <td>10 Juni 2024</td>
-                <td class="status disetujui">Disetujui</td>
-              </tr>
-              <tr>
-                <td>Lomba Sains</td>
-                <td>Tim Beta</td>
-                <td>Siti</td>
-                <td>
-                  <ol>
-                    <li>Eka</li>
-                    <li>Fajar</li>
-                    <li>Gilang</li>
-                  </ol>
-                </td>
-                <td>25 Juni 2024</td>
-                <td>15 Juni 2024</td>
-                <td class="status pending">Pending</td>
-              </tr>
-              <tr>
-                <td>Lomba Teknologi</td>
-                <td>Tim Gamma</td>
-                <td>Wawan</td>
-                <td>
-                  <ol>
-                    <li>Hana</li>
-                    <li>Ika</li>
-                    <li>Joko</li>
-                  </ol>
-                </td>
-                <td>30 Juni 2024</td>
-                <td>20 Juni 2024</td>
-                <td class="status tidak-disetujui">Tidak Disetujui</td>
-              </tr>
+              <?php foreach ($data as $row) : ?>
+                <tr>
+                  <td><?= $row['lomba']['nama_lomba'] ?></td>
+                  <td><?= $row['tim_lomba']['nama_tim'] ?></td>
+                  <td><?= $row['ketua']['nama_lengkap'] ?></td>
+                  <td>
+                    <ol>
+                      <?php foreach ($row['anggota_tim_lomba'] as $anggota) : ?>
+                        <li><?= $anggota['nama_lengkap'] ?></li>
+                      <?php endforeach; ?>
+                    </ol>
+                  </td>
+                  <td><?= $row['lomba']['tanggal_mulai'] ?></td>
+                  <td><?= $row['lomba']['tenggat_pendaftaran'] ?></td>
+                  <?php
+                  switch ($row['tim_lomba']['status']) {
+                    case 0:
+                      $style = 'color:red; font-weight:bold';
+                      $text = 'Disetujui';
+                      break;
+                    case 1:
+                      $style = 'color:orange; font-weight:bold';
+                      $text = 'Pending';
+                      break;
+                    case 2:
+                      $style = 'color:green; font-weight:bold';
+                      $text = 'Disetujui';
+                      break;
+                  }
+                  ?>
+                  <td style="<?= $style ?>"><?= $text ?></td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

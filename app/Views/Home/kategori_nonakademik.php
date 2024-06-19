@@ -33,7 +33,7 @@
       <div class="row align-items-center">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="home.php">
+            <a class="navbar-brand" href="<?= base_url('home')?>">
               <img src="img/logo.png" alt="logo" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="home.php">Halaman Utama</a>
+                  <a class="nav-link" href="<?= base_url('home')?>">Halaman Utama</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,15 +55,15 @@
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="berita.php">Berita</a>
+                  <a class="nav-link" href="<?= base_url('home/berita')?>">Berita</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Form Pengajuan
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                    <a class="dropdown-item" href="form_lomba.php">Info Lomba</a>
-                    <a class="dropdown-item" href="form_tim.php">Tim Lomba</a>
+                    <a class="dropdown-item" href="<?= base_url('form/form_lomba')?>">Info Lomba</a>
+                    <a class="dropdown-item" href="<?= base_url('form/form_tim')?>">Tim Lomba</a>
                   </div>
                 </li>
               </ul>
@@ -73,7 +73,7 @@
               <a href=""><i class="ti-bell"></i></a>
               <div class="dropdown cart">
                 <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <a href="profil.php" class="icon-link">
+                  <a href="<? base_url('mahasiswa/profile') ?>" class="icon-link">
                     <i class="ti-user"></i>
                   </a>
                 </a>

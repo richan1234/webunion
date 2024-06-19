@@ -168,7 +168,7 @@
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0 my-4 my-sm-4 my-lg-3">
-                        <a href="<?= base_url('mahasiswa/auth/logout') ?>" class="nav-link text-center text-white">
+                        <a href="<?= base_url('auth/mahasiswa/logout') ?>" class="nav-link text-center text-white">
                             <img src="<?= base_url('sidebar/assets/Logout.svg') ?>" alt="" class="icon img-fluid" width="70" height="70"><br>
                             <span class="fs-4 d-none d-sm-inline">KELUAR</span>
                         </a>
@@ -181,7 +181,7 @@
                     <h1>Profil Akun Anda</h1>
                     <div class="profile-info">
                         <div class="profile-display">
-                            <img src="<?= $mahasiswa['mahasiswa']['photo'] ?>" alt="Foto Profil" class="profile-picture">
+                            <img src="<?= base_url('uploads/mahasiswa/') . $mahasiswa['mahasiswa']['photo'] ?>" alt="Foto Profil" class="profile-picture">
                             <div class="profile-details">
                                 <p><strong>Nama Lengkap:</strong> <?= $mahasiswa['mahasiswa']['nama_lengkap'] ?></p>
                                 <p><strong>NIM:</strong> <?= $mahasiswa['mahasiswa']['NIM'] ?></p>

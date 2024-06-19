@@ -21,9 +21,13 @@ class TimLomba extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'NIM_ketua' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
             'status' => [
-                'type' => 'VARCHAR',
-                'constraint' => '20',
+                'type' => 'INT',
+                'constraint' => '1',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -33,7 +37,7 @@ class TimLomba extends Migration
         ]);
 
         $this->forge->addKey('tim_lomba_id', TRUE);
-        $this->forge->addForeignKey('lomba_id', 'lomba', 'lomba_id');
+        $this->forge->addForeignKey('lomba_id', 'lomba', 'lomba_id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('tim_lomba');
     }
     public function down()

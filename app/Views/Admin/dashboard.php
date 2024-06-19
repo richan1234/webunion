@@ -1,5 +1,3 @@
-<!-- todo: cek login -->
- 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,22 +12,20 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/responsive.bootstrap4.min.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/style1.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/admin/dashboard.css'); ?>">
-    <!-- JavaScript -->
-    <script src="https://code.jquery.comery.com/jquery-3.6.0s"></script>
-    <script src="https://cdn.datatables.net/1.10.24/tatables.net/1.10.24/js/jqutaTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/tatables.net/1.10.24/js/dataTabotstrap4.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ioniconsm/ionicons@7.1.0ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ioniconsm/ionicons@7ist/ionicons/ionicons.js"></script>
+    <!-- Custom CSS for Layout -->
 
-    <script src="<?= base_url('js/admin/dashboard.js'); ?>"></script>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 </head>
 
 <body>
     <div class="left-side-bar">
         <div class="brand-logo">
             <a href="index.php">
-                <!-- <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" /> -->
-                <!-- <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo" /> -->
+                <img src="<?= base_url('img/deskapp-logo.svg') ?>" alt="" class="dark-logo" />
+                <img src="<?= base_url('img/deskapp-logo-white.svg') ?>" alt="" class="light-logo" />
             </a>
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
@@ -74,7 +70,7 @@
                 <!-- Konten dari setiap menu akan dimuat di sini -->
                 <div id="default-content">
                     <h2>Selamat Datang di Dashboard</h2>
-                    <p class="test-red">Pilih menu dari sidebar untuk mulai.</p>
+                    <p>Pilih menu dari sidebar untuk mulai.</p>
                 </div>
             </div>
         </div>
@@ -83,30 +79,30 @@
     <!-- Konten tersembunyi untuk manajemen pengguna -->
     <div id="user-management-content" style="display: none;">
         <div class="action-buttons">
-            <button id="add-user">Add User</button>
+            <a href="<?= base_url('admin/register_user_form'); ?>" class="btn btn-primary">Add User</a>
         </div>
         <div class="table-responsive">
             <table id="userDataTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>NIM</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>john.doe@example.com</td>
-                        <td>Admin</td>
-                        <td>
-                            <button class="edit-user">Edit</button>
-                            <button class="delete-user">Delete</button>
-                        </td>
-                    </tr>
+                    <?php foreach ($mahasiswa as $row) : ?>
+                        <tr>
+                            <td><?= $row['NIM']; ?></td>
+                            <td><?= $row['nama_lengkap']; ?></td>
+                            <td><?= $row['email']; ?></td>
+                            <td>
+                                <button class="edit-user">Edit</button>
+                                <button class="delete-user">Delete</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                     <!-- Add more user rows if needed -->
                 </tbody>
             </table>
@@ -133,33 +129,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (count($approvalCompetitions) > 0) : ?>
-                        <?php foreach ($approvalCompetitions as $competition) : ?>
-                            <tr>
-                                <td><?= esc($competition['nama_lomba']); ?></td>
-                                <td><?= esc($competition['kategori_lomba']); ?></td>
-                                <td><?= esc($competition['tanggal_mulai']); ?></td>
-                                <td><?= esc($competition['tanggal_selesai']); ?></td>
-                                <td><?= esc($competition['keterangan_lomba']); ?></td>
-                                <td><img src="<?= base_url('uploads/' . esc($competition['poster_lomba'])); ?>" alt="Poster Lomba" width="100"></td>
-                                <td><a href="<?= esc($competition['link_lomba']); ?>">Link</a></td>
-                                <td>
-                                    <form action="<?= site_url('persetujuan.php'); ?>" method="post" style="display: inline-block;">
-                                        <input type="hidden" name="lomba_id" value="<?= esc($competition['lomba_id']); ?>">
-                                        <button type="submit" name="setujui" class="accept-approval-info-lomba">Setujui</button>
-                                    </form>
-                                    <form action="<?= site_url('persetujuan.php'); ?>" method="post" style="display: inline-block;">
-                                        <input type="hidden" name="lomba_id" value="<?= esc($competition['lomba_id']); ?>">
-                                        <button type="submit" name="tidak_setujui" class="decline-approval-info-lomba">Tidak Disetujui</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else : ?>
+                    <?php foreach ($approvalCompetitions as $competition) : ?>
                         <tr>
-                            <td colspan="8">Tidak ada data lomba yang menunggu persetujuan.</td>
+                            <td><?= $competition['nama_lomba']; ?></td>
+                            <td><?= $competition['kategori_lomba']; ?></td>
+                            <td><?= $competition['tanggal_mulai']; ?></td>
+                            <td><?= $competition['tanggal_selesai']; ?></td>
+                            <td><?= $competition['keterangan_lomba']; ?></td>
+                            <td><img src="<?= base_url('uploads/poster/' . $competition['poster_lomba']) ?>" alt="Poster Lomba" width="100" /></td>
+                            <td><a href="<?= $competition['link_lomba'] ?>">Link</a></td>
+                            <td>
+                                <button class="approve-competition">Approve</button>
+                                <button class="reject-competition">Reject</button>
+                            </td>
                         </tr>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -186,12 +170,12 @@
                         <?php foreach ($updateCompetitions as $competition) : ?>
                             <tr>
                                 <td><?= esc($competition['nama_lomba']); ?></td>
-                                <!-- <td><?= esc($competition['kategori_lomba']); ?></td>
+                                <td><?= esc($competition['kategori_lomba']); ?></td>
                                 <td><?= esc($competition['tanggal_mulai']); ?></td>
                                 <td><?= esc($competition['tanggal_selesai']); ?></td>
                                 <td><?= esc($competition['keterangan_lomba']); ?></td>
-                                <td><img src="<?= base_url('uploads/' . esc($competition['poster_lomba'])); ?>" alt="Poster Lomba" width="100"></td>
-                                <td><a href="<?= esc($competition['link_lomba']); ?>">Link</a></td> -->
+                                <td><img src="<?= base_url('uploads/poster/' . esc($competition['poster_lomba'])); ?>" alt="Poster Lomba" width="100"></td>
+                                <td><a href="<?= esc($competition['link_lomba']); ?>">Link</a></td>
                                 <td>
                                     <button class="edit-update-info-lomba">Edit</button>
                                     <button class="delete-update-info-lomba">Delete</button>
@@ -222,15 +206,6 @@
                         <th>Anggota 1</th>
                         <th>Anggota 2</th>
                         <th>Anggota 3</th>
-                        <th>Anggota 4</th>
-                        <th>Anggota 5</th>
-                        <th>Anggota 6</th>
-                        <th>Anggota 7</th>
-                        <th>Anggota 8</th>
-                        <th>Anggota 9</th>
-                        <th>Anggota 10</th>
-                        <th>Anggota 11</th>
-
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -238,9 +213,9 @@
                     <?php if (count($approvalTeams) > 0) : ?>
                         <?php foreach ($approvalTeams as $team) : ?>
                             <tr>
-                                <td><?= esc($team['nama_lomba']); ?></td>
-                                <td><?= esc($team['tenggat_pendaftaran']); ?></td>
-                                <td><?= esc($team['nama_tim']); ?></td>
+                                <td><?= $team['nama_lomba'] ?></td>
+                                <td><?= $team['tenggat_pendaftaran'] ?></td>
+                                <td><?= $team['nama_tim'] ?></td>
                                 <td>
                                     <form action="<?= site_url('persetujuantim.php'); ?>" method="post" style="display: inline-block;">
                                         <input type="hidden" name="tim_lomba_id" value="<?= esc($team['tim_lomba_id']); ?>">
@@ -294,6 +269,34 @@
         </div>
     </div>
 
+
+    <script>
+        $(document).ready(function() {
+            // Default content
+            $('#main-content').html($('#default-content').html());
+
+            $('#user-management').click(function() {
+                $('#main-content').html($('#user-management-content').html());
+            });
+
+            $('#approval-info-lomba').click(function() {
+                $('#main-content').html($('#approval-info-lomba-content').html());
+                $('#infoLombaTable').DataTable();
+            });
+
+            $('#update-info-lomba').click(function() {
+                $('#main-content').html($('#update-info-lomba-content').html());
+            });
+
+            $('#approval-tim-lomba').click(function() {
+                $('#main-content').html($('#approval-tim-lomba-content').html());
+            });
+
+            $('#create-news').click(function() {
+                $('#main-content').html($('#create-news-content').html());
+            });
+        });
+    </script>
 </body>
 
 </html>

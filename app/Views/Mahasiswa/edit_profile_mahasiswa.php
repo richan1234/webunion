@@ -127,7 +127,7 @@
             </a>
           </li>
           <li class="nav-item py-2 py-sm-0 my-4 my-sm-4 my-lg-3">
-            <a href="<?= base_url('mahasiswa/auth/logout') ?>" class="nav-link text-center text-white">
+            <a href="<?= base_url('auth/mahasiswa/logout') ?>" class="nav-link text-center text-white">
               <img src="<?= base_url('sidebar/assets/Logout.svg') ?>" alt="" class="icon img-fluid" width="70" height="70"><br>
               <span class="fs-4 d-none d-sm-inline">KELUAR</span>
             </a>
@@ -138,14 +138,29 @@
       <div class="main-content col-auto min-vh-100 d-flex flex-column p-4 p-sm-4 p-md-5 p">
         <div class="container">
           <h1>Profil Akun Anda:</h1>
+          <!-- ALERT -->
+          <section id="message">
+            <?php if (session()->getFlashdata('success')) : ?>
+              <div class="alert alert-success">
+                <?= session()->getFlashdata('success'); ?>
+              </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('errors')) : ?>
+              <div class="alert alert-danger">
+                <?= session()->getFlashdata('errors'); ?>
+              </div>
+            <?php endif; ?>
+          </section>
           <div class="profile-container">
             <div class="profile-update">
               <h2>Update Profil Anda</h2>
-              <img src="path/to/profile-picture.jpg" alt="Profile Picture" class="profile-picture">
-              <form action='editprofile.php' method='post' enctype="multipart/form-data">
+
+              <img src="<?= base_url('uploads/mahasiswa/' . $mahasiswa['mahasiswa']['photo']) ?>" alt="Profile Picture" class="profile-picture">
+              <form action='<?= base_url('mahasiswa/update_profile') ?>' method='post' enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="nickname">Nama Lengkap*</label>
-                  <input type="text" id="nickname" name="nickname" value="<?= $mahasiswa['mahasiswa']['nama_lengkap'] ?>" readonly>
+                  <label for="nama_lengkap">Nama Lengkap*</label>
+                  <input type="text" id="nama_lengkap" name="nama_lengkap" value="<?= $mahasiswa['mahasiswa']['nama_lengkap'] ?>" readonly>
                 </div>
                 <div class="form-group">
                   <label for="email">Email*</label>
@@ -168,14 +183,18 @@
             </div>
             <div class="password-update">
               <h2>Ganti Password</h2>
-              <form action='editpassword.php' method='post'>
+              <form action='<?= base_url('mahasiswa/update_password') ?>' method='post'>
                 <div class="form-group">
-                  <label for="new-password">Password baru*</label>
-                  <input type="password" id="new-password" name="new-password">
+                  <label for="old_password">Password Lama*</label>
+                  <input type="password" id="old_password" name="old_password" required>
                 </div>
                 <div class="form-group">
-                  <label for="confirm-password">Konfirmasi Password*</label>
-                  <input type="password" id="confirm-password" name="confirm-password">
+                  <label for="new_password">Password baru*</label>
+                  <input type="password" id="new_password" name="new_password" required>
+                </div>
+                <div class="form-group">
+                  <label for="confirm_password">Konfirmasi Password*</label>
+                  <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
                 <div class="form-actions">
                   <button type="submit" class="btn change-password-btn">Ganti Password</button>

@@ -13,13 +13,9 @@ class Lomba extends Migration
                 'type'           => 'CHAR',
                 'constraint'     => 36,
             ],
-            'nama_tim' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-            ],
             'status' => [
-                'type' => 'VARCHAR',
-                'constraint' => '20',
+                'type' => 'INT',
+                'constraint' => '1',
             ],
             'kategori_lomba' => [
                 'type' => 'VARCHAR',
@@ -39,9 +35,6 @@ class Lomba extends Migration
             ],
             'keterangan_lomba' => [
                 'type' => 'TEXT',
-            ],
-            'tanggal_lomba' => [
-                'type' => 'DATE',
             ],
             'tenggat_pendaftaran' => [
                 'type' => 'DATE',

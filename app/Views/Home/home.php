@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>" />
     <link rel="stylesheet" href="<?= base_url('css/responsive.css') ?>" />
 
-    <script src="<? base_url('js/auth.js') ?>" crossorigin="anonymous"></script>
+    <script src="<?= base_url('js/auth.js') ?>" crossorigin="anonymous"></script>
 </head>
 
 <body>

@@ -99,48 +99,62 @@
   <section class="form">
     <div class="container">
       <div class="judul_form_lomba">
-        <div class="section-tittle text-center">
+        <div class="section-title text-center">
           <h2>FORM PENGAJUAN INFO LOMBA</h2>
         </div>
       </div>
 
-      <form action="insertlomba.php" method="post" enctype="multipart/form-data" class="form_lomba">
+      <section class="" id="message">
+        <?php if (session()->getFlashdata('success')) : ?>
+          <div class="mt-5 alert alert-success">
+            <?= session()->getFlashdata('success'); ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (session()->getFlashdata('errors')) : ?>
+          <div class="mt-5 alert alert-danger">
+            <?= session()->getFlashdata('errors'); ?>
+          </div>
+        <?php endif; ?>
+      </section>
+
+      <form action="<?= base_url('form/insert_lomba') ?>" method="post" enctype="multipart/form-data" class="form_lomba">
         <div class="input-box">
           <label>Nama Lomba</label>
-          <input type="text" name="nama" id="nama" placeholder="Cantumkan Nama Lomba">
+          <input type="text" name="nama_lomba" id="nama_lomba" placeholder="Cantumkan Nama Lomba">
         </div>
-        <div class="kategori-box">
+        <div class="kategori_lomba-box">
           <h3>Kategori Lomba</h3>
-          <div class="kategori-option">
-            <div class="kategori">
-              <input type="radio" id="Akademik" name="kategori" checked>
+          <div class="kategori_lomba-option">
+            <div class="kategori_lomba">
+              <input type="radio" id="Akademik" name="kategori_lomba" value="akademik" checked>
               <label for="Akademik">Akademik</label>
             </div>
-            <div class="kategori">
-              <input type="radio" id="Non-Akademik" name="kategori">
+            <div class="kategori_lomba">
+              <input type="radio" id="Non-Akademik" name="kategori_lomba" value="non-akademik">
               <label for="Non-Akademik">Non-Akademik</label>
             </div>
           </div>
         </div>
         <div class="input-box">
           <label>Deadline Pendaftaran</label>
-          <input type="date" name="tenggat" id="tenggat">
+          <input type="date" name="tenggat_pendaftaran" id="tenggat_pendaftaran">
         </div>
         <div class="input-box">
           <label>Tanggal Lomba Dimulai</label>
-          <input type="date" name="mulai" id="mulai">
+          <input type="date" name="tanggal_mulai" id="tanggal_mulai">
         </div>
         <div class="input-box">
           <label>Tanggal Lomba Berakhir</label>
-          <input type="date" name="selesai" id="selesai">
+          <input type="date" name="tanggal_selesai" id="tanggal_selesai">
         </div>
         <div class="input-box">
           <label>Link Resmi Lomba</label>
-          <input type="text" name="link" id="link" placeholder="">
+          <input type="text" name="link_lomba" id="link_lomba" placeholder="">
         </div>
         <div class="input-box">
           <label>Keterangan Lomba</label>
-          <textarea name="keterangan" id="keterangan" cols="30" rows="10"></textarea>
+          <textarea name="keterangan_lomba" id="keterangan_lomba" cols="30" rows="10"></textarea>
         </div>
         <div class="form-group">
           <label>Poster Lomba</label>
@@ -263,7 +277,7 @@
   <script src="<?= base_url('js/mail-script.js') ?>"></script>
   <!-- custom js -->
   <script src="<?= base_url('js/custom.js') ?>"></script>
-  <script src="<?= base_url('js/form/form_lomba.js')?>"></script>
+  <script src="<?= base_url('js/form/form_lomba.js') ?>"></script>
 </body>
 
 </html>

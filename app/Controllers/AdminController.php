@@ -2,21 +2,32 @@
 
 namespace App\Controllers;
 
+use App\Models\ProdiModel;
+use App\Models\MahasiswaModel;
+
 class AdminController extends BaseController
 {
+    protected $prodi;
+    protected $mahasiswa;
+    public function __construct()
+    {
+        $this->prodi = new ProdiModel();
+        $this->mahasiswa = new MahasiswaModel();
+    }
+
     public function dashboard()
     {
         $db = \Config\Database::connect();
 
         // Query builder untuk mengambil data lomba yang menunggu persetujuan
         $approvalCompetitions = $db->table('lomba')
-            ->where('status', 0)
+            ->where('status', 1)
             ->get()
             ->getResultArray();
 
         // Query builder untuk mengambil data lomba yang telah disetujui
         $updateCompetitions = $db->table('lomba')
-            ->where('status', 1)
+            ->where('status', 2)
             ->get()
             ->getResultArray();
 
@@ -28,10 +39,21 @@ class AdminController extends BaseController
             ->get()
             ->getResultArray();
 
+
+        // Query builder untuk mengambil data akun mahasiswa
+        $mahasiswa = $this->mahasiswa->findAll();
+
         return view('admin/dashboard', [
             'approvalCompetitions' => $approvalCompetitions,
             'updateCompetitions' => $updateCompetitions,
             'approvalTeams' => $approvalTeams,
+            'mahasiswa' => $mahasiswa
         ]);
+    }
+
+    public function registerUserForm()
+    {
+        $prodi = $this->prodi->findAll();
+        return view('admin/register_user_form', ['prodi' => $prodi]);
     }
 }

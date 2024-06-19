@@ -14,6 +14,7 @@
     <script src="<?= base_url('js/user/index.js') ?>" crossorigin="anonymous"></script>
 </head>
 
+
 <body class="d-flex">
     <div class="container full-screen">
         <nav class="navbar navbar-light bg-transparent">
@@ -64,11 +65,12 @@
     <div class="popup-content admin">
         <div class="popup">
             <div class="close-btn">&times;</div>
-            <form class="formadmin" action="loginadmin.php" method="post">
+            <form class="formadmin" id="formadmin" action="<?= base_url('auth/admin/login') ?>" method="post">
                 <h2>Log in Admin</h2>
+                <div id="error-message-admin" style="color:red"></div>
                 <div class="form-element">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter Username">
+                    <label for="admin_id">Admin ID</label>
+                    <input type="text" id="admin_id" name="admin_id" placeholder="Enter Admin id">
                 </div>
                 <div class="form-element">
                     <label for="password">Password</label>

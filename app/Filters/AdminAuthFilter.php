@@ -17,13 +17,7 @@ class AdminAuthFilter implements FilterInterface
             return redirect()->to(base_url('/'));
         }
 
-        $userType = $session->get('user_type');
-        if (!$this->isAdminLoggedIn()) {
-            return response()->setJSON([
-                'status' => 'success',
-                'redirect_url' => '/home', // Redirect URL on successful login
-            ])->setStatusCode(401)->redirect(base_url('/'));
-        }
+        
     }
     private function isAdminLoggedIn()
     {

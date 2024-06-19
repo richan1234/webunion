@@ -52,12 +52,12 @@ class Mahasiswa extends Migration
         ]);
 
         $this->forge->addKey('NIM', TRUE);
-        $this->forge->addForeignKey('prodi_id', 'prodi', 'prodi_id');
+        $this->forge->addForeignKey('prodi_id', 'prodi', 'prodi_id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('mahasiswa');
     }
 
     public function down()
     {
-        //
+        $this->forge->dropTable('mahasiswa');
     }
 }
