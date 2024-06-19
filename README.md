@@ -38,6 +38,12 @@ php spark db:seed DatabaseSeeder
 7. config .env (example below, make sure the database is exists)
 ```shell
 #--------------------------------------------------------------------
+# ENVIRONMENT
+#--------------------------------------------------------------------
+
+CI_ENVIRONMENT = development
+
+#--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
 
@@ -50,7 +56,9 @@ database.default.DBPrefix =
 database.default.port = 3306
 ```
 
-8. Start the local development server 
+8. Manually create a `app\writable` and `app\writable\cache` folder
+
+9. Start the local development server 
 ```shell
 php spark serve
 ```
