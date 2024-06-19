@@ -35,6 +35,21 @@ php spark migrate --all
 php spark db:seed DatabaseSeeder
 ```
 
+7. config .env (example below, make sure the database is exists)
+```shell
+#--------------------------------------------------------------------
+# DATABASE
+#--------------------------------------------------------------------
+
+database.default.hostname = localhost
+database.default.database = database_webunion
+database.default.username = root
+database.default.password = root
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
+database.default.port = 3306
+```
+
 8. Start the local development server 
 ```shell
 php spark serve
