@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const tenggatInput = document.getElementById('tenggat');
-    const mulaiInput = document.getElementById('mulai');
-    const selesaiInput = document.getElementById('selesai');
+    const tenggatInput = document.getElementById('tenggat_pendaftaran');
+    const mulaiInput = document.getElementById('tanggal_mulai');
+    const selesaiInput = document.getElementById('tanggal_selesai');
 
     const today = new Date().toISOString().split('T')[0];
     tenggatInput.setAttribute('min', today);
