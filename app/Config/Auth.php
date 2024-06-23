@@ -46,7 +46,7 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      */
     public array $views = [
-        'login'                       => '\App\Views\index',
+        'login'                       => '\CodeIgniter\Shield\Views\login',
         'register'                    => '\CodeIgniter\Shield\Views\register',
         'layout'                      => '\CodeIgniter\Shield\Views\layout',
         'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
@@ -76,7 +76,7 @@ class Auth extends ShieldAuth
     public array $redirects = [
         'register'          => '/',
         'login'             => '/',
-        'logout'            => '/',
+        'logout'            => 'login',
         'force_reset'       => '/',
         'permission_denied' => '/',
         'group_denied'      => '/',
@@ -205,7 +205,7 @@ class Auth extends ShieldAuth
         'field'              => 'user',
         'allowRemembering'   => true,
         'rememberCookieName' => 'remember',
-        'rememberLength'     => 3 * DAY,
+        'rememberLength'     => 30 * DAY,
     ];
 
     /**
@@ -407,7 +407,7 @@ class Auth extends ShieldAuth
      * @var array<string, string>
      */
     public array $tables = [
-        'users'             => 'dummy_users', 
+        'users'             => 'users',
         'identities'        => 'auth_identities',
         'logins'            => 'auth_logins',
         'token_logins'      => 'auth_token_logins',
